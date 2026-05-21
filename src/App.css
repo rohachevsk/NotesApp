@@ -1,0 +1,337 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100svh;
+  background:
+    radial-gradient(circle at top left, rgba(66, 184, 131, 0.18), transparent 34rem),
+    radial-gradient(circle at bottom right, rgba(255, 111, 97, 0.14), transparent 30rem),
+    linear-gradient(135deg, #f7f8fb 0%, #eef2f6 100%);
+}
+
+#root {
+  width: 100%;
+  border: 0;
+  text-align: initial;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid rgba(26, 127, 108, 0.28);
+  outline-offset: 3px;
+}
+
+.app-shell {
+  width: min(100%, 920px);
+  min-height: 100svh;
+  margin: 0 auto;
+  padding: 56px 20px;
+  display: grid;
+  place-items: center;
+}
+
+.notes-panel {
+  width: min(100%, 720px);
+  padding: clamp(22px, 4vw, 36px);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow:
+    0 24px 80px rgba(31, 41, 55, 0.13),
+    inset 0 1px 0 rgba(255, 255, 255, 0.76);
+  backdrop-filter: blur(22px);
+}
+
+.app-header {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 28px;
+  text-align: left;
+}
+
+.app-kicker {
+  margin: 0;
+  color: #1a7f6c;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.title-row h1 {
+  margin: 0;
+  color: #14171f;
+  font-size: clamp(36px, 7vw, 72px);
+  font-weight: 850;
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.note-count {
+  min-width: 46px;
+  height: 46px;
+  padding: 0 14px;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid rgba(20, 23, 31, 0.08);
+  border-radius: 999px;
+  color: #14171f;
+  background: #f8d66d;
+  font-size: 18px;
+  font-weight: 800;
+  box-shadow: 0 10px 24px rgba(248, 214, 109, 0.35);
+}
+
+.note-composer {
+  display: grid;
+  gap: 14px;
+  padding: 10px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.68);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.note-input {
+  width: 100%;
+  min-height: 62px;
+  padding: 0 18px;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  color: #14171f;
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(31, 41, 55, 0.08);
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.note-input::placeholder {
+  color: #8b93a4;
+}
+
+.note-input:hover {
+  border-color: rgba(26, 127, 108, 0.22);
+}
+
+.note-input:focus {
+  border-color: rgba(26, 127, 108, 0.42);
+  box-shadow: 0 16px 36px rgba(31, 41, 55, 0.12);
+  transform: translateY(-1px);
+}
+
+.composer-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.button {
+  min-height: 48px;
+  padding: 0 18px;
+  border-radius: 14px;
+  font-weight: 800;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+}
+
+.button:hover,
+.icon-button:hover {
+  transform: translateY(-1px);
+}
+
+.button:active,
+.icon-button:active {
+  transform: translateY(0);
+}
+
+.button-primary {
+  flex: 1;
+  color: #ffffff;
+  background: linear-gradient(135deg, #14171f, #1a7f6c);
+  box-shadow: 0 14px 28px rgba(20, 23, 31, 0.22);
+}
+
+.button-primary:hover {
+  box-shadow: 0 18px 36px rgba(26, 127, 108, 0.28);
+}
+
+.button-ghost {
+  color: #48515f;
+  background: #eef2f6;
+}
+
+.button-ghost:hover {
+  background: #e2e8f0;
+}
+
+.empty-state {
+  margin: 24px 0 0;
+  padding: 22px;
+  border: 1px dashed rgba(15, 23, 42, 0.18);
+  border-radius: 18px;
+  color: #687386;
+  background: rgba(255, 255, 255, 0.42);
+  text-align: center;
+}
+
+.note-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.note-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 20px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.72)),
+    #ffffff;
+  box-shadow: 0 12px 30px rgba(31, 41, 55, 0.08);
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.note-item:hover {
+  border-color: rgba(26, 127, 108, 0.18);
+  box-shadow: 0 18px 44px rgba(31, 41, 55, 0.12);
+  transform: translateY(-2px);
+}
+
+.note-text {
+  margin: 0;
+  color: #252a34;
+  font-size: 17px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+
+.note-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.icon-button {
+  min-height: 38px;
+  padding: 0 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 800;
+  transition:
+    color 180ms ease,
+    transform 180ms ease,
+    background 180ms ease;
+}
+
+.edit-button {
+  color: #0f766e;
+  background: rgba(20, 184, 166, 0.12);
+}
+
+.edit-button:hover {
+  background: rgba(20, 184, 166, 0.2);
+}
+
+.delete-button {
+  color: #b42318;
+  background: rgba(255, 111, 97, 0.14);
+}
+
+.delete-button:hover {
+  background: rgba(255, 111, 97, 0.22);
+}
+
+@media (max-width: 620px) {
+  .app-shell {
+    padding: 20px 12px;
+    align-items: start;
+  }
+
+  .notes-panel {
+    border-radius: 22px;
+  }
+
+  .title-row {
+    align-items: end;
+  }
+
+  .composer-actions,
+  .note-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .note-item {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background:
+      radial-gradient(circle at top left, rgba(20, 184, 166, 0.16), transparent 34rem),
+      radial-gradient(circle at bottom right, rgba(255, 111, 97, 0.1), transparent 30rem),
+      linear-gradient(135deg, #101218 0%, #171b24 100%);
+  }
+
+  .notes-panel,
+  .note-composer,
+  .note-item {
+    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(21, 25, 34, 0.72);
+  }
+
+  .title-row h1,
+  .note-text {
+    color: #f7f8fb;
+  }
+
+  .note-count {
+    color: #171b24;
+  }
+
+  .note-input {
+    color: #f7f8fb;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .button-ghost {
+    color: #d5dbe6;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .empty-state {
+    color: #aeb7c6;
+    background: rgba(255, 255, 255, 0.05);
+  }
+}
