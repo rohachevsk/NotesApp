@@ -36,7 +36,6 @@ Open the browser at the address shown in the terminal, usually `http://localhost
 
 ![Editing Note](./public/screenshot-2.png)
 
-## Demo
+## Live Demo
 
-[Demo is not configured. If you publish the app, add the link here.](https://notesapp-blond-two.vercel.app/)
-
+[Open NotesUp](https://notesapp-blond-two.vercel.app/)
