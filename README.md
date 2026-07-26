@@ -30,11 +30,11 @@ Open the browser at the address shown in the terminal, usually `http://localhost
 
 ### Main Screen
 
-![Main Screen](./assets/home.png)
+![Main Screen](./public/screenshot-1.png)
 
 ### Editing Note
 
-![Editing Note](./assets/edit-note.png)
+![Editing Note](./public/screenshot-2.png)
 
 ## Demo
 
