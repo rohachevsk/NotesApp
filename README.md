@@ -28,20 +28,13 @@ Open the browser at the address shown in the terminal, usually `http://localhost
 
 ## Screenshots
 
-Take a screenshot of the app and save it into the project `public/` folder with one of these names:
+### Main Screen
 
-- `public/screenshot-1.png` — main app screen
-- `public/screenshot-2.png` — note creation/edit screen
+![Main Screen](./assets/home.png)
 
-Add this example to `README.md`:
+### Editing Note
 
-```md
-## Screenshots
-
-![NotesUp main screen](./public/screenshot-1.png)
-
-![NotesUp edit note screen](./public/screenshot-2.png)
-```
+![Editing Note](./assets/edit-note.png)
 
 ## Demo
 
