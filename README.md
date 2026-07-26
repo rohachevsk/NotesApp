@@ -38,5 +38,5 @@ Open the browser at the address shown in the terminal, usually `http://localhost
 
 ## Demo
 
-Demo is not configured. If you publish the app, add the link here.
+[Demo is not configured. If you publish the app, add the link here.](https://notesapp-blond-two.vercel.app/)
 
