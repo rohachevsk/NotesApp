@@ -18,7 +18,9 @@ body {
 }
 
 button,
-input {
+input,
+textarea,
+select {
   font: inherit;
 }
 
@@ -28,7 +30,9 @@ button {
 }
 
 button:focus-visible,
-input:focus-visible {
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
   outline: 3px solid rgba(26, 127, 108, 0.28);
   outline-offset: 3px;
 }
@@ -105,17 +109,27 @@ input:focus-visible {
 .note-composer {
   display: grid;
   gap: 14px;
-  padding: 10px;
+  padding: 14px;
   border: 1px solid rgba(15, 23, 42, 0.08);
   border-radius: 22px;
   background: rgba(255, 255, 255, 0.68);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
+.composer-field,
+.search-field,
+.sort-field {
+  display: grid;
+  gap: 7px;
+  color: #48515f;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
 .note-input {
   width: 100%;
-  min-height: 62px;
-  padding: 0 18px;
+  padding: 14px 18px;
   border: 1px solid transparent;
   border-radius: 16px;
   color: #14171f;
@@ -125,6 +139,17 @@ input:focus-visible {
     border-color 180ms ease,
     box-shadow 180ms ease,
     transform 180ms ease;
+}
+
+.note-title-input {
+  min-height: 54px;
+  font-weight: 750;
+}
+
+.note-body-input {
+  min-height: 112px;
+  line-height: 1.55;
+  resize: vertical;
 }
 
 .note-input::placeholder {
@@ -178,6 +203,13 @@ input:focus-visible {
   box-shadow: 0 18px 36px rgba(26, 127, 108, 0.28);
 }
 
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+  box-shadow: none;
+  transform: none;
+}
+
 .button-ghost {
   color: #48515f;
   background: #eef2f6;
@@ -185,6 +217,29 @@ input:focus-visible {
 
 .button-ghost:hover {
   background: #e2e8f0;
+}
+
+.note-tools {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(190px, auto);
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.tool-control {
+  width: 100%;
+  min-height: 46px;
+  padding: 0 14px;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  border-radius: 13px;
+  color: #252a34;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.tool-control:hover {
+  border-color: rgba(26, 127, 108, 0.28);
 }
 
 .empty-state {
@@ -201,6 +256,10 @@ input:focus-visible {
   display: grid;
   gap: 12px;
   margin-top: 24px;
+}
+
+.note-tools + .note-list {
+  margin-top: 16px;
 }
 
 .note-item {
@@ -227,13 +286,34 @@ input:focus-visible {
   transform: translateY(-2px);
 }
 
+.note-content {
+  min-width: 0;
+}
+
+.note-title {
+  margin: 0 0 7px;
+  color: #14171f;
+  font-size: 19px;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
 .note-text {
   margin: 0;
   color: #252a34;
   font-size: 17px;
   line-height: 1.45;
   overflow-wrap: anywhere;
+  white-space: pre-wrap;
   text-align: left;
+}
+
+.note-date {
+  display: block;
+  margin-top: 10px;
+  color: #7b8494;
+  font-size: 12px;
+  font-weight: 650;
 }
 
 .note-actions {
@@ -291,6 +371,10 @@ input:focus-visible {
     grid-template-columns: 1fr 1fr;
   }
 
+  .note-tools {
+    grid-template-columns: 1fr;
+  }
+
   .note-item {
     grid-template-columns: 1fr;
   }
@@ -312,6 +396,7 @@ input:focus-visible {
   }
 
   .title-row h1,
+  .note-title,
   .note-text {
     color: #f7f8fb;
   }
@@ -320,9 +405,21 @@ input:focus-visible {
     color: #171b24;
   }
 
-  .note-input {
+  .note-input,
+  .tool-control {
     color: #f7f8fb;
     background: rgba(255, 255, 255, 0.08);
+  }
+
+  .composer-field,
+  .search-field,
+  .sort-field,
+  .note-date {
+    color: #aeb7c6;
+  }
+
+  .note-tools {
+    border-color: rgba(255, 255, 255, 0.08);
   }
 
   .button-ghost {
@@ -334,4 +431,5 @@ input:focus-visible {
     color: #aeb7c6;
     background: rgba(255, 255, 255, 0.05);
   }
+
 }
